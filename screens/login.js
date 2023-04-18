@@ -1,16 +1,27 @@
 import { useNavigation } from '@react-navigation/core'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image } from 'react-native'
 import React, { useState } from 'react'
-import 'firebase/compat/firestore';
-import 'firebase/compat/auth';
+import { initializeApp } from 'firebase/app'
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
+import { auth } from '../firebase-config'
 
 const login = () => {
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [user, setUser] = useState({});
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
 
   const handleSignUp = () => {
-    auth
-      .createUserWithEmailAndPassword(email, password)
+      createUserWithEmailAndPassword(auth, email, password)
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('Registered with:', user.email);
@@ -19,8 +30,7 @@ const login = () => {
   }
 
   const handleLogin = () => {
-    auth
-      .signInWithEmailAndPassword(email, password)
+      signInWithEmailAndPassword(auth, email, password)
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('Logged in with:', user.email);
