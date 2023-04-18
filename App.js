@@ -3,8 +3,9 @@ import { StatusBar } from 'expo-status-bar';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import login from './screens/login';
+import Login from './screens/Login';
 import LandingScreen from './screens/HomeScreen';
+import RandomQuoteScreen from './screens/Splashscreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -14,7 +15,8 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen options={{headerShown: false}} name='Home' component={LandingScreen}/>
-        <Stack.Screen name="Login" component={login} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="RandomQuoteScreen" component={RandomQuoteScreen} options={{ title: 'Quote Generator' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

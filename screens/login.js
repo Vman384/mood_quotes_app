@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/core'
+import { useNavigation } from '@react-navigation/native'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image } from 'react-native'
 import React, { useState } from 'react'
 import { initializeApp } from 'firebase/app'
@@ -9,8 +9,10 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from '../firebase-config'
+import RandomQuoteScreen from './Splashscreen';
 
-const login = () => {
+
+const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -20,11 +22,14 @@ const login = () => {
     setUser(currentUser);
   });
 
+  const navigation = useNavigation();
+
   const handleSignUp = () => {
       createUserWithEmailAndPassword(auth, email, password)
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('Registered with:', user.email);
+        navigation.navigate('RandomQuoteScreen');
       })
       .catch(error => alert(error.message))
   }
@@ -34,6 +39,7 @@ const login = () => {
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('Logged in with:', user.email);
+        navigation.navigate('RandomQuoteScreen');
       })
       .catch(error => alert(error.message))
   }
@@ -88,7 +94,7 @@ const login = () => {
   )
 }
 
-export default login
+export default Login
 
 const styles = StyleSheet.create({
   container: {
