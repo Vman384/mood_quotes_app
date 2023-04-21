@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import Menu from './components/Menu';
 
 const quotes = [
     "The best way to predict the future is to invent it.",
@@ -24,11 +25,14 @@ const quotes = [
   ];
 
 const RandomQuoteScreen = () => {
-  const [currentQuote, setCurrentQuote] = useState('');
+  const [currentQuote, setCurrentQuote] = useState("");
+  const [oldQuotes, setOldQuotes] = useState([]);
 
   const generateRandomQuote = () => {
     const randomIndex = Math.floor(Math.random() * quotes.length);
-    setCurrentQuote(quotes[randomIndex]);
+    const quote = quotes[randomIndex];
+    setOldQuotes([...oldQuotes, quote]); // add the new quote to oldQuotes state
+    setCurrentQuote(quote);
   };
 
   useEffect(() => {
@@ -39,16 +43,30 @@ const RandomQuoteScreen = () => {
     generateRandomQuote();
   };
 
+  const onSwipeDown = () => {
+    if (oldQuotes.length === 0) {
+      return false;
+    } else {
+      const previousQuote = oldQuotes[oldQuotes.length - 1]; // get the last quote in oldQuotes state
+      setOldQuotes(oldQuotes.slice(0, oldQuotes.length - 1)); // remove the last quote from oldQuotes state
+      setCurrentQuote(previousQuote);
+    }
+  };
+
   return (
     <GestureRecognizer
       style={styles.container}
       onSwipeUp={onSwipeUp}
+      onSwipeDown={onSwipeDown}
       config={{
         velocityThreshold: 0.3,
         directionalOffsetThreshold: 80,
       }}>
       <View style={styles.quoteContainer}>
         <Text style={styles.quoteText}>{currentQuote}</Text>
+      </View>
+      <View>
+        <Menu />
       </View>
     </GestureRecognizer>
   );

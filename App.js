@@ -18,7 +18,7 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen options={{headerShown: false}} name='Home' component={LandingScreen}/>
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="RandomQuoteScreen" component={RandomQuoteScreen} options={{ title: 'Quote Generator' }} />
+        <Stack.Screen name="RandomQuoteScreen" component={RandomQuoteScreen} options={{ title: 'Your Quote' }} />
         <Stack.Screen name='MoodInput' component={MoodInput}/>
         <Stack.Screen name='MoodGraph' component={MoodGraph}/>
       </Stack.Navigator>

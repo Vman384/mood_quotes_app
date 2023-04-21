@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import Menu from "./components/Menu";
 
 const Container = styled.div`
   display: flex;
@@ -78,6 +79,9 @@ const MoodGraph = () =>{
       <DatePickerContainer>
         <DatePicker type="date" value={selectedDate} onChange={handleDateChange} />
       </DatePickerContainer>
+      <Container>
+        <Menu />
+      </Container>
     </Container>
   );
 }

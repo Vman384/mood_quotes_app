@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import Menu from "./components/Menu";
 
 const Container = styled.div`
   display: flex;
@@ -47,6 +48,9 @@ const MoodInput = () =>{
           </MoodButton>
         ))}
       </MoodContainer>
+      <Container>
+        <Menu />
+        </Container>
     </Container>
   );
 
