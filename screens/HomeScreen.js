@@ -37,7 +37,7 @@ const LandingScreen = () => {
           placeholder name
         </Text>
         <Text style={styles.heading}>
-          Inspring Words For Your Daily Life
+          placeholder
         </Text>
         <TouchableOpacity style={styles.registerButton} onPress={navigateToRegister}>
           <Text style={styles.registerbuttonText}>Register</Text>

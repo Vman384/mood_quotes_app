@@ -6,6 +6,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './screens/Login';
 import LandingScreen from './screens/HomeScreen';
 import RandomQuoteScreen from './screens/Splashscreen';
+import MoodInput from './screens/Moodinput';
+import MoodGraph from './screens/MoodGraph';
 
 
 const Stack = createNativeStackNavigator();
@@ -17,6 +19,8 @@ function App() {
         <Stack.Screen options={{headerShown: false}} name='Home' component={LandingScreen}/>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="RandomQuoteScreen" component={RandomQuoteScreen} options={{ title: 'Quote Generator' }} />
+        <Stack.Screen name='MoodInput' component={MoodInput}/>
+        <Stack.Screen name='MoodGraph' component={MoodGraph}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
