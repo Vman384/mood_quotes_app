@@ -28,7 +28,7 @@ const Menu = () => {
         </View>
     )
 
-}
+};
 
 const styles = StyleSheet.create({});
 

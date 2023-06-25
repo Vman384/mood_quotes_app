@@ -48,9 +48,9 @@ const MoodInput = () =>{
           </MoodButton>
         ))}
       </MoodContainer>
-      <Container>
+      {/* <Container>
         <Menu />
-        </Container>
+        </Container> */}
     </Container>
   );
 

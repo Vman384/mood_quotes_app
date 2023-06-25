@@ -79,9 +79,9 @@ const MoodGraph = () =>{
       <DatePickerContainer>
         <DatePicker type="date" value={selectedDate} onChange={handleDateChange} />
       </DatePickerContainer>
-      <Container>
+      {/* <Container>
         <Menu />
-      </Container>
+      </Container> */}
     </Container>
   );
 }
